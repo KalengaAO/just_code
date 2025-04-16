@@ -1,0 +1,25 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Editor Remoto</title>
+  <style>
+    body { background: #111; color: #0f0; font-family: monospace; padding: 1rem; }
+    pre { white-space: pre-wrap; word-wrap: break-word; border: 1px solid #444; padding: 1rem; }
+  </style>
+</head>
+<body>
+  <h2>Código Recebido:</h2>
+  <pre id="display">Aguardando código...</pre>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const display = document.getElementById('display');
+
+    socket.on('update', function (data) {
+      display.textContent = data;
+    });
+  </script>
+</body>
+</html>
